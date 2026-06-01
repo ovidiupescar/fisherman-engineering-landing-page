@@ -1,43 +1,70 @@
-# Astro Starter Kit: Minimal
+# Fisherman Engineering Landing Page
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Public website for Fisherman Engineering SRL — a safety-critical engineering consultancy focused on automotive safety, robotics safety, embedded software, and AI management systems.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The site is built with Astro and Tailwind CSS. It presents the company positioning, service areas, brand identity, and open-source work such as the Human-Robot Interface project.
 
-## 🚀 Project Structure
+## What it includes
 
-Inside of your Astro project, you'll see the following folders and files:
+- Responsive Astro landing page for Fisherman Engineering
+- Service sections for ISO 26262, robotics safety, embedded software, project management, and ISO 42001 AI management
+- FE Signal Halo brand identity assets and design guidelines
+- Open-source project highlight section linking to the HRI robotics stack
+- Lightweight static build suitable for simple hosting
+
+## Tech stack
+
+- Astro 5
+- Tailwind CSS 4
+- TypeScript configuration
+- Static assets in `public/`
+- Brand source files in `design/`
+
+## Project structure
 
 ```text
 /
-├── public/
+├── design/              Brand assets, logo explorations, and guidelines
+├── public/              Static images, icons, and favicon assets
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── layouts/         Shared Astro layout
+│   ├── pages/           Site pages
+│   └── styles/          Global CSS and design tokens
+├── astro.config.mjs
+├── package.json
+└── tailwind.config.mjs
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Local development
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Install dependencies:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```sh
+npm install
+```
 
-## 🧞 Commands
+Run the development server:
 
-All commands are run from the root of the project, from a terminal:
+```sh
+npm run dev
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Build the production site:
 
-## 👀 Want to learn more?
+```sh
+npm run build
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Preview the production build locally:
+
+```sh
+npm run preview
+```
+
+## Brand focus
+
+The current visual system uses the FE Signal Halo identity: a technical, high-trust design language for safety engineering across automotive, robotics, and autonomous systems.
+
+## License
+
+Copyright Fisherman Engineering SRL. Public repository for website source and brand presentation.
