@@ -2,164 +2,198 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Fisherman Engineering">
+<Layout title="Fisherman Engineering — Automotive Safety, Robotics Safety & Systems Consulting">
     <div class="relative min-h-screen flex flex-col">
         <!-- Navigation -->
-        <nav class="border-b border-white/10 backdrop-blur-md sticky top-0 z-50 bg-[#0a0a0a]/80">
+        <nav class="border-b border-border-mist sticky top-0 z-50 bg-offwhite/85 backdrop-blur-md">
             <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                <a href="/" class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-                    <span class="text-primary font-mono">///</span> Fisherman Engineering
+                <a href="/" class="flex items-center" aria-label="Fisherman Engineering home">
+                    <img src="/fe-wordmark.png" alt="Fisherman Engineering" class="h-6 w-auto" />
                 </a>
-                <a href="mailto:ovidiupescar@fishermanengineering.com" class="text-sm font-medium text-gray-400 hover:text-white transition-colors border border-white/10 px-4 py-2 rounded-md hover:bg-white/5">
-                    Contact
-                </a>
+                <div class="flex items-center gap-8">
+                    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-steel">
+                        <a href="#services" class="hover:text-navy transition-colors">Services</a>
+                        <a href="#open-source" class="hover:text-navy transition-colors">Open Source</a>
+                    </div>
+                    <a href="mailto:ovidiupescar@fishermanengineering.com" class="text-sm font-semibold text-white bg-orange px-4 py-2 rounded-md hover:bg-orange/90 transition-colors">
+                        Get in Touch
+                    </a>
+                </div>
             </div>
         </nav>
 
         <main class="flex-grow">
             <!-- Hero Section -->
-            <section class="relative pt-32 pb-20 px-6 border-b border-white/10 overflow-hidden">
-                <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-                
-                <div class="max-w-4xl mx-auto relative z-10">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-primary mb-8">
-                        <span>EST. 2017</span>
-                    </div>
-                    <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
-                        Software Engineering <br />
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Services.</span>
-                    </h1>
-                    <p class="text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed">
-                        Specialized in C/C++ Embedded Development, AUTOSAR Integration, and ISO 26262 Safety Analysis for the automotive industry.
-                    </p>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <a href="mailto:ovidiupescar@fishermanengineering.com" class="px-8 py-3 bg-primary text-white font-semibold rounded hover:bg-primary/90 transition-colors inline-flex items-center gap-2">
-                            Get in touch <span class="font-mono">-></span>
-                        </a>
+            <section class="relative bg-midnight overflow-hidden">
+                <!-- technical grid motif -->
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:48px_48px]"></div>
+                <!-- signal halo glow, top-right -->
+                <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-orange/20 blur-[120px]"></div>
+
+                <div class="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-28">
+                    <div class="max-w-3xl">
+                        <div class="flex items-center gap-3 mb-8">
+                            <span class="px-3 py-1 rounded-full border border-white/15 text-white/70 font-mono text-xs">EST. 2017</span>
+                            <span class="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-orange">
+                                <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
+                                Automotive · Robotics · Systems
+                            </span>
+                        </div>
+
+                        <h1 class="font-heading font-bold text-white text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] mb-6">
+                            Engineering Safety for<br />
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/55">Automotive, AI &amp; Robotics.</span>
+                        </h1>
+
+                        <div class="w-16 h-1 rounded-full bg-orange mb-8"></div>
+
+                        <p class="text-lg md:text-xl text-tech/80 max-w-2xl mb-10 leading-relaxed">
+                            Specialized in functional safety analysis, embedded C/C++ software, and AI management systems — across automotive, robotics, and autonomous machines.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4">
+                            <a href="mailto:ovidiupescar@fishermanengineering.com" class="px-7 py-3 bg-orange text-white font-semibold rounded-md hover:bg-orange/90 transition-colors inline-flex items-center gap-2">
+                                Get in Touch <span class="font-mono">-></span>
+                            </a>
+                            <a href="#services" class="px-7 py-3 border border-white/20 text-white font-semibold rounded-md hover:bg-white/5 transition-colors">
+                                View Services
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Features Grid -->
-            <section class="py-24 px-6 relative">
+            <!-- Services Grid -->
+            <section id="services" class="py-24 px-6 bg-offwhite">
                  <div class="max-w-7xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="mb-14 max-w-2xl">
+                        <div class="font-mono text-xs uppercase tracking-wider text-orange mb-3">// Services</div>
+                        <h2 class="font-heading font-semibold text-navy text-3xl md:text-4xl tracking-tight">
+                            Safety-critical engineering, end to end.
+                        </h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Card 1 -->
-                        <div class="p-8 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors group">
-                            <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                        <div class="group p-8 rounded-lg bg-white border border-border-mist hover:border-orange/60 hover:shadow-xl hover:shadow-navy/5 transition-all">
+                            <div class="w-12 h-12 rounded-md bg-tech flex items-center justify-center text-navy mb-6 group-hover:bg-orange/10 group-hover:text-orange transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold mb-4 font-mono">Software Development</h3>
-                            <ul class="space-y-3 text-gray-400">
+                            <span class="block w-8 h-0.5 rounded-full bg-orange mb-4"></span>
+                            <h3 class="text-xl font-heading font-semibold text-navy mb-4">Software Development</h3>
+                            <ul class="space-y-3 text-steel">
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     C/C++ Embedded
                                 </li>
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     AUTOSAR Integration
                                 </li>
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     Software Architecture
                                 </li>
                             </ul>
                         </div>
 
                         <!-- Card 2 -->
-                        <div class="p-8 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors group">
-                             <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                        <div class="group p-8 rounded-lg bg-white border border-border-mist hover:border-orange/60 hover:shadow-xl hover:shadow-navy/5 transition-all">
+                            <div class="w-12 h-12 rounded-md bg-tech flex items-center justify-center text-navy mb-6 group-hover:bg-orange/10 group-hover:text-orange transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold mb-4 font-mono">ISO 26262 Safety</h3>
-                            <ul class="space-y-3 text-gray-400">
+                            <span class="block w-8 h-0.5 rounded-full bg-orange mb-4"></span>
+                            <h3 class="text-xl font-heading font-semibold text-navy mb-4">ISO 26262 Safety</h3>
+                            <ul class="space-y-3 text-steel">
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     FMEA / FTA / SFA
                                 </li>
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     Safety Architecture
                                 </li>
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     Safety Requirements
                                 </li>
                             </ul>
                         </div>
 
                         <!-- Card 3 -->
-                        <div class="p-8 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors group">
-                             <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                        <div class="group p-8 rounded-lg bg-white border border-border-mist hover:border-orange/60 hover:shadow-xl hover:shadow-navy/5 transition-all">
+                            <div class="w-12 h-12 rounded-md bg-tech flex items-center justify-center text-navy mb-6 group-hover:bg-orange/10 group-hover:text-orange transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold mb-4 font-mono">Project Management</h3>
-                            <ul class="space-y-3 text-gray-400">
+                            <span class="block w-8 h-0.5 rounded-full bg-orange mb-4"></span>
+                            <h3 class="text-xl font-heading font-semibold text-navy mb-4">Project Management</h3>
+                            <ul class="space-y-3 text-steel">
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     Team Leading
                                 </li>
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     Project Monitoring
                                 </li>
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     Stakeholder Satisfaction
                                 </li>
                             </ul>
                         </div>
 
                         <!-- Card 4 -->
-                        <div class="p-8 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors group">
-                             <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                        <div class="group p-8 rounded-lg bg-white border border-border-mist hover:border-orange/60 hover:shadow-xl hover:shadow-navy/5 transition-all">
+                            <div class="w-12 h-12 rounded-md bg-tech flex items-center justify-center text-navy mb-6 group-hover:bg-orange/10 group-hover:text-orange transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold mb-4 font-mono">ISO 42001 AI Management</h3>
-                            <ul class="space-y-3 text-gray-400">
+                            <span class="block w-8 h-0.5 rounded-full bg-orange mb-4"></span>
+                            <h3 class="text-xl font-heading font-semibold text-navy mb-4">ISO 42001 AI Management</h3>
+                            <ul class="space-y-3 text-steel">
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     AI Management Systems
                                 </li>
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     AI Governance
                                 </li>
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     AI Risk Management
                                 </li>
                             </ul>
                         </div>
 
                         <!-- Card 5 -->
-                        <div class="p-8 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors group">
-                             <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                        <div class="group p-8 rounded-lg bg-white border border-border-mist hover:border-orange/60 hover:shadow-xl hover:shadow-navy/5 transition-all">
+                            <div class="w-12 h-12 rounded-md bg-tech flex items-center justify-center text-navy mb-6 group-hover:bg-orange/10 group-hover:text-orange transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold mb-4 font-mono">Robotics Safety</h3>
-                            <ul class="space-y-3 text-gray-400">
+                            <span class="block w-8 h-0.5 rounded-full bg-orange mb-4"></span>
+                            <h3 class="text-xl font-heading font-semibold text-navy mb-4">Robotics Safety</h3>
+                            <ul class="space-y-3 text-steel">
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     Functional Safety
                                 </li>
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     Collaborative Robots
                                 </li>
                                 <li class="flex items-center gap-3">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     Risk Assessment
                                 </li>
                             </ul>
@@ -169,30 +203,31 @@ import Layout from '../layouts/Layout.astro';
             </section>
 
             <!-- Open Source Section -->
-            <section class="py-24 px-6 border-t border-white/10">
+            <section id="open-source" class="pb-24 px-6 bg-offwhite">
                 <div class="max-w-7xl mx-auto">
-                    <div class="text-xs font-mono text-primary mb-3">// OPEN SOURCE</div>
-                    <div class="p-8 md:p-10 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors">
-                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                    <div class="relative overflow-hidden p-8 md:p-12 rounded-xl bg-midnight">
+                        <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-orange/15 blur-[100px]"></div>
+                        <div class="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between gap-8">
                             <div class="max-w-2xl">
+                                <div class="font-mono text-xs uppercase tracking-wider text-orange mb-4">// Open Source</div>
                                 <div class="flex items-center gap-3 mb-4">
-                                    <h3 class="text-2xl font-bold font-mono">Human-Robot Interface</h3>
-                                    <span class="px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary">HRI</span>
+                                    <h3 class="text-2xl md:text-3xl font-heading font-semibold text-white">Human-Robot Interface</h3>
+                                    <span class="px-2 py-0.5 rounded-full bg-orange/15 border border-orange/30 text-xs font-mono text-orange">HRI</span>
                                 </div>
-                                <p class="text-gray-400 leading-relaxed mb-6">
+                                <p class="text-tech/75 leading-relaxed mb-6">
                                     An open-source robotics stack for building a bilingual voice companion: ESP32-S3 face
                                     firmware, a Jetson-side ROS 2 pipeline for audio, perception and control, and an
                                     agent-platform adapter for extensible skills. Designed to run offline-capable on edge
                                     hardware.
                                 </p>
-                                <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-400">
+                                <div class="flex flex-wrap gap-2 text-xs font-mono text-tech/70">
                                     <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">ROS 2</span>
                                     <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Jetson Orin</span>
                                     <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">ESP32-S3</span>
                                     <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Python / C++</span>
                                 </div>
                             </div>
-                            <a href="https://github.com/ovidiupescar/human-robot-interface" target="_blank" rel="noopener noreferrer" class="shrink-0 px-6 py-3 bg-white/5 border border-white/10 text-white font-semibold rounded hover:border-primary/50 hover:bg-white/10 transition-colors inline-flex items-center gap-2">
+                            <a href="https://github.com/ovidiupescar/human-robot-interface" target="_blank" rel="noopener noreferrer" class="shrink-0 px-6 py-3 bg-orange text-white font-semibold rounded-md hover:bg-orange/90 transition-colors inline-flex items-center gap-2">
                                 View on GitHub <span class="font-mono">-></span>
                             </a>
                         </div>
@@ -201,15 +236,19 @@ import Layout from '../layouts/Layout.astro';
             </section>
 
             <!-- Footer -->
-            <footer class="py-12 px-6 border-t border-white/10">
-                <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div class="text-gray-500 text-sm">
-                        &copy; {new Date().getFullYear()} Fisherman Engineering.
-                    </div>
-                    <div class="text-gray-500 text-sm">
-                        <a href="mailto:ovidiupescar@fishermanengineering.com" class="hover:text-primary transition-colors">
+            <footer class="bg-navy py-14 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                        <div>
+                            <img src="/fe-wordmark.png" alt="Fisherman Engineering" class="h-6 w-auto brightness-0 invert opacity-90 mb-3" />
+                            <p class="text-tech/55 text-sm font-mono">Automotive Safety · Robotics Safety · Systems Consulting</p>
+                        </div>
+                        <a href="mailto:ovidiupescar@fishermanengineering.com" class="text-tech/70 text-sm hover:text-orange transition-colors">
                             ovidiupescar@fishermanengineering.com
                         </a>
+                    </div>
+                    <div class="mt-10 pt-6 border-t border-white/10 text-tech/45 text-sm">
+                        &copy; {new Date().getFullYear()} Fisherman Engineering SRL.
                     </div>
                 </div>
             </footer>

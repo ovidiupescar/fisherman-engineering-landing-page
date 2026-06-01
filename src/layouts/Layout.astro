@@ -4,7 +4,7 @@ interface Props {
     description?: string;
 }
 
-const { title, description = "Software Engineering Services" } = Astro.props;
+const { title, description = "Automotive Safety, Robotics Safety & Systems Consulting" } = Astro.props;
 import '../styles/global.css';
 ---
 
@@ -14,26 +14,15 @@ import '../styles/global.css';
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/fe-icon.png" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-[#0a0a0a] text-white font-sans antialiased selection:bg-[#007bff] selection:text-white">
+	<body class="bg-offwhite text-ink font-body antialiased selection:bg-orange selection:text-white">
 		<slot />
 	</body>
 </html>
-<style is:global>
-    :root {
-        --font-inter: 'Inter', sans-serif;
-        --font-mono: 'JetBrains Mono', monospace;
-    }
-    body {
-        font-family: var(--font-inter);
-    }
-    code, pre {
-        font-family: var(--font-mono);
-    }
-</style>
