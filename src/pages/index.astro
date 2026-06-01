@@ -30,8 +30,8 @@ import Layout from '../layouts/Layout.astro';
                 <!-- signal halo glow, top-right -->
                 <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-orange/20 blur-[120px]"></div>
 
-                <div class="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-28">
-                    <div class="max-w-3xl">
+                <div class="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-28 flex items-center gap-16">
+                    <div class="max-w-3xl flex-1">
                         <div class="flex items-center gap-3 mb-8">
                             <span class="px-3 py-1 rounded-full border border-white/15 text-white/70 font-mono text-xs">EST. 2017</span>
                             <span class="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-orange">
@@ -59,6 +59,11 @@ import Layout from '../layouts/Layout.astro';
                                 View Services
                             </a>
                         </div>
+                    </div>
+
+                    <!-- FE Signal Halo brand tile -->
+                    <div class="hidden lg:flex shrink-0 items-center justify-center w-72 h-72 rounded-2xl bg-cool-white border border-white/10 shadow-2xl shadow-black/40">
+                        <img src="/fe-icon.png" alt="Fisherman Engineering FE Signal Halo mark" class="w-44 h-44" />
                     </div>
                 </div>
             </section>
@@ -90,7 +95,15 @@ import Layout from '../layouts/Layout.astro';
                                 </li>
                                 <li class="flex items-center gap-3">
                                     <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
+                                    Python
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
                                     AUTOSAR Integration
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
+                                    ROS 2
                                 </li>
                                 <li class="flex items-center gap-3">
                                     <span class="w-1.5 h-1.5 rounded-full bg-orange"></span>
