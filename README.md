@@ -16,7 +16,7 @@ The site is built with Astro and Tailwind CSS. It presents the company positioni
 
 ## Tech stack
 
-- Astro 5
+- Astro 7
 - Tailwind CSS 4
 - TypeScript configuration
 - Static assets in `public/`
