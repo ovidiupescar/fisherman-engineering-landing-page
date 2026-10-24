@@ -1,0 +1,5 @@
+# Astro 7 needs Node >= 22.12; Nixpacks' own nixpkgs pin ships nodejs_22 at 22.11.
+# This nixos-26.05 commit has nodejs_22 22.23.3 (npm bundled).
+[phases.setup]
+nixPkgs = ['nodejs_22']
+nixpkgsArchive = '6a40ea287aa5884702571c407c82837349c59b7c'
