@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* dev tooling only; keep it out of Tailwind's class scan */
+@source not "../../tools";
 
 /* Fisherman Engineering — Route A: Deep Navy + Safety Orange
    Design tokens from design/DESIGN.md */

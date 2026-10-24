@@ -1,0 +1,16 @@
+[
+  ["wait", 1000],
+  ["eval", "document.documentElement.scrollWidth > innerWidth ? 'OVERFLOW' : 'no overflow'"],
+  ["eval", "[...document.querySelectorAll('svg[data-brain-svg]')].map(s => s.dataset.brainSvg + ':' + Math.round(s.getBoundingClientRect().width)).join(' ')"],
+  ["eval", "'h1 x' + document.querySelectorAll('h1').length + ' | ' + [...document.querySelectorAll('h1,h2,h3')].map(h => h.tagName + ' ' + h.textContent.trim().slice(0, 34)).join(' / ')"],
+  ["key", "ArrowRight", "#be-tab-capture"],
+  ["wait", 300],
+  ["eval", "document.activeElement.id + ' selected=' + document.activeElement.getAttribute('aria-selected') + ' panelHidden=' + document.getElementById('be-panel-curate').hidden"],
+  ["key", "End", "#be-tab-curate"],
+  ["wait", 300],
+  ["eval", "document.activeElement.id + ' selected=' + document.activeElement.getAttribute('aria-selected') + ' caption=' + document.querySelector('[data-be-caption]').textContent"],
+  ["key", "Home", "#be-tab-retrieve"],
+  ["wait", 6500],
+  ["eval", "document.activeElement.id + ' caption=' + document.querySelector('[data-be-caption]').textContent + ' chip=' + getComputedStyle(document.querySelector('svg[data-brain-svg=desktop] [data-chip-indexed]')).opacity"],
+  ["shot", "tools/brain-figure/out/t-tablet.png", "[data-brain-figure]", 1]
+]

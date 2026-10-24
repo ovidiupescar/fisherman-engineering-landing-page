@@ -1,0 +1,7 @@
+[
+  ["wait", 1000],
+  ["eval", "document.documentElement.scrollWidth > innerWidth ? 'OVERFLOW' : 'no overflow'"],
+  ["eval", "'scripts=' + document.querySelectorAll('script[src]').length + ' h1=' + document.querySelectorAll('h1').length + ' hero=' + document.querySelector('main section p').textContent.trim().slice(0, 60)"],
+  ["scroll", "#projects"],
+  ["shot", "tools/brain-figure/out/h-projects.png", "#projects", 1]
+]

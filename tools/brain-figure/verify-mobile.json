@@ -1,0 +1,13 @@
+[
+  ["wait", 1200],
+  ["eval", "document.documentElement.scrollWidth > innerWidth ? 'OVERFLOW ' + document.documentElement.scrollWidth : 'no overflow'"],
+  ["eval", "[...document.querySelectorAll('svg[data-brain-svg]')].map(s => s.dataset.brainSvg + ':' + Math.round(s.getBoundingClientRect().width)).join(' ')"],
+  ["eval", "[...document.querySelectorAll('[role=tab],[data-be-replay]')].map(b => Math.round(b.getBoundingClientRect().height)).join(',')"],
+  ["scroll", "[data-brain-figure] .be-mobile"],
+  ["shot", "tools/brain-figure/out/m-idle.png", "[data-brain-figure] .be-mobile", 1],
+  ["click", "#be-tab-retrieve"],
+  ["wait", 2500],
+  ["shot", "tools/brain-figure/out/m-retrieve-mid.png", "[data-brain-figure] .be-mobile", 1],
+  ["wait", 4000],
+  ["shot", "tools/brain-figure/out/m-controls.png", "[data-brain-figure] .be-bar", 2]
+]
