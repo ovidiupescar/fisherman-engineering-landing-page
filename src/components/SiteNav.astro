@@ -1,0 +1,26 @@
+---
+import { EMAIL } from '../lib/site';
+
+const links = [
+    { href: '/#services', label: 'Services' },
+    { href: '/#ai-transformation', label: 'AI Transformation' },
+    { href: '/#leadership', label: 'Leadership' },
+    { href: '/#projects', label: 'Projects' },
+];
+---
+
+<nav class="border-b border-border-mist sticky top-0 z-50 bg-offwhite/85 backdrop-blur-md" aria-label="Main">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center" aria-label="Fisherman Engineering home">
+            <img src="/fe-wordmark.png" alt="Fisherman Engineering" class="h-6 w-auto" />
+        </a>
+        <div class="flex items-center gap-8">
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-steel">
+                {links.map((l) => <a href={l.href} class="hover:text-navy transition-colors">{l.label}</a>)}
+            </div>
+            <a href={`mailto:${EMAIL}`} class="text-sm font-semibold text-white bg-orange px-4 py-2 rounded-md hover:bg-orange/90 transition-colors">
+                Get in Touch
+            </a>
+        </div>
+    </div>
+</nav>

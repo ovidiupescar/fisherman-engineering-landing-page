@@ -1,0 +1,20 @@
+---
+import { EMAIL } from '../lib/site';
+---
+
+<footer class="bg-navy py-14 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+            <div>
+                <img src="/fe-wordmark.png" alt="Fisherman Engineering" class="h-6 w-auto brightness-0 invert opacity-90 mb-3" />
+                <p class="text-tech/55 text-sm font-mono">Automotive Safety · Robotics Safety · Systems Consulting</p>
+            </div>
+            <a href={`mailto:${EMAIL}`} class="text-tech/70 text-sm hover:text-orange transition-colors break-all">
+                {EMAIL}
+            </a>
+        </div>
+        <div class="mt-10 pt-6 border-t border-white/10 text-tech/60 text-sm">
+            &copy; {new Date().getFullYear()} Fisherman Engineering SRL.
+        </div>
+    </div>
+</footer>

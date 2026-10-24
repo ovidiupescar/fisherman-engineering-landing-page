@@ -1,0 +1,78 @@
+---
+// Public, sanitized BRAIN architecture. Generic names only: no hosts, tokens, paths, models or projects.
+const flow = [
+    { step: '01', title: 'Sources', items: ['Grok Bots', 'Claude Code · Codex', 'Hermes jobs', 'Calendar feed', 'Document drop'] },
+    { step: '02', title: 'Scoped interfaces', items: ['HTTP MCP for agents', 'CLI for operators', 'Automated feeds'], note: 'One token per agent, scoped per area and operation' },
+    { step: '03', title: 'Capture', items: ['Immutable source + event', 'SQLite FTS5 index', 'Searchable at once'], note: 'No LLM call' },
+    { step: '04', title: 'Curation', items: ['Hermes Agent, one area at a time', 'Restricted workspace', 'Validated diff'], note: 'Asynchronous' },
+    { step: '05', title: 'Markdown wiki in Git', items: ['Curated pages', 'Commit + curation receipt', 'Full history'], note: 'Source of truth' },
+    { step: '06', title: 'Retrieval', items: ['twin_brief · search', 'read · read_source', 'related · changes'], note: 'Only authorized areas' },
+];
+const areas = [
+    { id: 'shared', name: 'Shared Knowledge', bot: 'No dedicated bot', lines: ['Readable by agents whose token allows it', 'Twin bots cannot write here'] },
+    { id: 'a', name: 'Project Twin A', bot: 'Dedicated Grok Bot A', lines: ['Own wiki, sources, events, receipts, index and lock', 'Reads Shared pages only by explicit import'] },
+    { id: 'b', name: 'Project Twin B', bot: 'Dedicated Grok Bot B', lines: ['Own wiki, sources, events, receipts, index and lock', 'Cannot see Twin A'] },
+];
+---
+
+<figure class="ad" aria-labelledby="ad-cap">
+    <ol class="ad-flow">
+        {flow.map((s) => (
+            <li class="ad-step">
+                <span class="ad-n">{s.step}</span>
+                <h3>{s.title}</h3>
+                <ul>{s.items.map((i) => <li>{i}</li>)}</ul>
+                {s.note && <p class="ad-note">{s.note}</p>}
+            </li>
+        ))}
+    </ol>
+
+    <div class="ad-areas">
+        <p class="ad-label">Isolated areas inside one repository</p>
+        <div class="ad-grid">
+            {areas.map((a) => (
+                <div class={`ad-area ad-${a.id}`}>
+                    <h3>{a.name}</h3>
+                    <p class="ad-bot">{a.bot}</p>
+                    <ul>{a.lines.map((l) => <li>{l}</li>)}</ul>
+                </div>
+            ))}
+        </div>
+        <p class="ad-imports"><span aria-hidden="true">Shared → Twin</span> Explicit imports only. No link between twins. An area outside a token's scope behaves as if it does not exist.</p>
+    </div>
+
+    <figcaption id="ad-cap">
+        Simplified, public view of the BRAIN architecture. Markdown and Git hold the knowledge; indexes and reports can be rebuilt from the repository.
+    </figcaption>
+</figure>
+
+<style>
+    .ad { margin: 0; }
+    .ad-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; counter-reset: s; }
+    .ad-step { position: relative; background: #fff; border: 1px solid #d8e0e8; border-radius: 12px; padding: 16px 14px 14px; }
+    .ad-step:not(:last-child)::after {
+        content: ''; position: absolute; right: -11px; top: 50%; width: 8px; height: 8px; border-top: 2px solid #ff6a00; border-right: 2px solid #ff6a00; transform: translateY(-50%) rotate(45deg);
+    }
+    .ad-n { font: 500 11px/1 'JetBrains Mono', monospace; color: #ff6a00; }
+    .ad h3 { font: 600 15px/1.3 Sora, Inter, sans-serif; color: #0a1d33; margin: 8px 0 10px; }
+    .ad ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; font-size: 13px; line-height: 1.4; color: #4d5f72; }
+    .ad-note { margin: 12px 0 0; padding-top: 10px; border-top: 1px dashed #d8e0e8; font: 500 11.5px/1.4 'JetBrains Mono', monospace; color: #0a1d33; }
+    .ad-areas { margin-top: 22px; border: 1px solid #d8e0e8; border-radius: 14px; padding: 18px; background: #f7f8fa; }
+    .ad-label { margin: 0 0 12px; font: 500 12px/1 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; color: #617182; }
+    .ad-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .ad-area { background: #fff; border-radius: 12px; padding: 14px; border: 1px solid #d8e0e8; border-top: 4px solid var(--c); }
+    .ad-shared { --c: #7fa9cf; }
+    .ad-a { --c: #ff6a00; }
+    .ad-b { --c: #00b3a1; }
+    .ad-bot { margin: -4px 0 10px; font: 600 12.5px/1.3 Inter, sans-serif; color: #0a1d33; }
+    .ad-imports { margin: 14px 0 0; font-size: 13px; color: #4d5f72; }
+    .ad-imports span { font: 600 12px/1 'JetBrains Mono', monospace; color: #0a1d33; margin-right: 8px; }
+    .ad figcaption { margin-top: 14px; font-size: 13px; color: #617182; }
+    @media (max-width: 1023px) {
+        .ad-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .ad-step:not(:last-child)::after { display: none; }
+    }
+    @media (max-width: 639px) {
+        .ad-flow, .ad-grid { grid-template-columns: 1fr; }
+    }
+</style>

@@ -1,0 +1,229 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import BrainFigure from '../../components/brain/BrainFigure.astro';
+import ArchitectureDiagram from '../../components/brain/ArchitectureDiagram.astro';
+import { mailto } from '../../lib/site';
+
+const stages = [
+    { n: '01', title: 'Capture', text: 'Agents and automated feeds submit information through controlled interfaces. Sources are preserved and immediately indexed, without waiting for AI processing.' },
+    { n: '02', title: 'Curate', text: 'An automated Hermes-based curator transforms captured information into structured Markdown knowledge, using restricted workspaces, validation, and traceable Git commits.' },
+    { n: '03', title: 'Retrieve', text: 'Authorized agents retrieve project context through MCP tools, including session briefs, search, curated pages, and original sources.' },
+];
+
+const highlights = [
+    { title: 'Project Digital Twins', text: 'Dedicated project memories with explicit access boundaries.' },
+    { title: 'Grok Bot Integration', text: 'Project-specific assistants with persistent knowledge access through MCP.' },
+    { title: 'Git-Native Knowledge', text: 'Human-readable Markdown as the canonical knowledge representation.' },
+    { title: 'Automated Curation', text: 'Hermes-driven consolidation with controlled changes and validation.' },
+    { title: 'Provenance & Traceability', text: 'Original sources, revision history, and curation receipts.' },
+    { title: 'Rebuildable Search', text: 'SQLite FTS5 indexing that can be regenerated from the canonical repository.' },
+];
+
+const grokSteps = [
+    'A session starts with the dedicated Grok Bot of a project.',
+    'It calls twin_brief for the current project state, recent activity and open tasks.',
+    'It searches and reads the project knowledge it needs, including Shared pages that project imports.',
+    'It does its work with that context, inside the scope of its own token.',
+    'It submits decisions, notes and new information back to its project twin.',
+    'Hermes curates those submissions later, so the next session starts from updated knowledge.',
+];
+
+const principles = [
+    ['Separation of capture and AI processing', 'Information is stored and searchable before any model touches it.'],
+    ['Explicit access boundaries', 'Per-agent tokens scoped per area and operation.'],
+    ['Immutable captured sources', 'Originals are kept; curated pages point back to them.'],
+    ['Git-based history', 'Every curated change is a commit with a receipt.'],
+    ['Validated AI-generated updates', 'Curator changes are checked before they are committed.'],
+    ['Rebuildable derived indexes', 'Search indexes and reports can be regenerated from the repository.'],
+    ['Human-readable knowledge', 'Plain Markdown that people can read, review and correct.'],
+];
+
+const operational = [
+    'Scoped MCP access for agents',
+    'Shared and project-specific knowledge areas',
+    'Grok Bot integration',
+    'Immediate source capture and indexing',
+    'Automated curation with Hermes Agent',
+    'Document and calendar ingestion',
+    'Reindexing, linting and reports',
+];
+const planned = ['Meeting-audio ingestion', 'NAS-backed ingestion', 'Additional retrieval approaches'];
+---
+
+<Layout
+    title="BRAIN | Persistent AI Agent Memory & Project Digital Twins — Fisherman Engineering"
+    description="Explore BRAIN, a Git-native AI knowledge system connecting Grok Bot and development agents to persistent, isolated project memories through MCP."
+    image="/brain/brain-og.png"
+    imageAlt="BRAIN: two Grok Bots with their own project memories, a Shared Knowledge library, Hermes Agent and Claude Code / Codex"
+>
+    <div class="relative min-h-screen flex flex-col">
+        <SiteNav />
+        <main class="flex-grow">
+            <!-- Hero + figure -->
+            <section class="relative bg-midnight overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-orange/20 blur-[120px]"></div>
+                <div class="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-16">
+                    <div class="max-w-3xl">
+                        <div class="font-mono text-xs uppercase tracking-wider text-orange mb-5">// Engineering Case Study · Internal R&amp;D</div>
+                        <h1 class="font-heading font-bold text-white text-5xl md:text-6xl tracking-tight mb-4">BRAIN</h1>
+                        <p class="font-heading text-xl md:text-2xl text-tech/90 mb-6">Persistent memory for project-aware AI agents.</p>
+                        <p class="text-lg text-tech/75 leading-relaxed mb-6">
+                            BRAIN is an operational, self-hosted knowledge infrastructure that connects AI agents to persistent, structured project memory — enabling continuity across conversations, development sessions, documents, and complex engineering workflows.
+                        </p>
+                        <p class="text-tech/75 leading-relaxed mb-8">
+                            It extends Grok Bot with a persistent memory: each project gets its own Grok Bot and its own knowledge, and every new session starts from what the project already knows.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 text-tech/80 font-mono text-xs">
+                                <span class="w-2 h-2 rounded-full bg-[#22c55e]" aria-hidden="true"></span>Operational · Internal R&amp;D
+                            </span>
+                            <a href="#how-it-works" class="text-white font-semibold hover:text-orange transition-colors">See how it works <span class="font-mono" aria-hidden="true">-></span></a>
+                        </div>
+                    </div>
+                    <div class="mt-14" id="how-it-works">
+                        <BrainFigure />
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenge -->
+            <section class="py-20 px-6 bg-offwhite">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
+                    <div class="lg:col-span-2">
+                        <div class="font-mono text-xs uppercase tracking-wider text-orange mb-3">// The Challenge</div>
+                        <h2 class="font-heading font-semibold text-navy text-3xl md:text-4xl tracking-tight">AI agents are powerful. Their context is fragmented.</h2>
+                    </div>
+                    <div class="lg:col-span-3 space-y-4 text-steel leading-relaxed text-lg">
+                        <p>Complex engineering projects accumulate knowledge across development sessions, technical decisions, documents, and conversations.</p>
+                        <p>Without a structured memory layer, agents repeatedly reconstruct project context, lose historical reasoning, and struggle to maintain continuity across tools.</p>
+                        <p>BRAIN addresses this problem through persistent, project-specific knowledge infrastructure with controlled access and traceable updates.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Architecture -->
+            <section class="pb-20 px-6 bg-offwhite">
+                <div class="max-w-7xl mx-auto">
+                    <div class="mb-10 max-w-3xl">
+                        <div class="font-mono text-xs uppercase tracking-wider text-orange mb-3">// The Architecture</div>
+                        <h2 class="font-heading font-semibold text-navy text-3xl md:text-4xl tracking-tight mb-4">One knowledge infrastructure. Multiple isolated project memories.</h2>
+                        <p class="text-steel leading-relaxed">
+                            A Shared area holds reusable knowledge. Each active project has its own digital twin with a dedicated Grok Bot. Agents reach areas through scoped MCP access, a curator consolidates what they capture, and everything is persisted as Markdown in Git.
+                        </p>
+                    </div>
+                    <ArchitectureDiagram />
+                </div>
+            </section>
+
+            <!-- How it works -->
+            <section class="py-20 px-6 bg-white border-y border-border-mist">
+                <div class="max-w-7xl mx-auto">
+                    <div class="mb-10 max-w-3xl">
+                        <div class="font-mono text-xs uppercase tracking-wider text-orange mb-3">// How BRAIN Works</div>
+                        <h2 class="font-heading font-semibold text-navy text-3xl md:text-4xl tracking-tight">From raw information to persistent knowledge.</h2>
+                    </div>
+                    <ol class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {stages.map((s) => (
+                            <li class="border-t-2 border-orange pt-5">
+                                <div class="font-mono text-xs text-orange mb-2" aria-hidden="true">{s.n}</div>
+                                <h3 class="font-heading font-semibold text-navy text-xl mb-3">{s.title}</h3>
+                                <p class="text-steel leading-relaxed">{s.text}</p>
+                            </li>
+                        ))}
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Grok Bot integration -->
+            <section class="py-20 px-6 bg-midnight">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
+                    <div class="lg:col-span-2">
+                        <div class="font-mono text-xs uppercase tracking-wider text-orange mb-3">// Grok Bot Integration</div>
+                        <h2 class="font-heading font-semibold text-white text-3xl md:text-4xl tracking-tight mb-4">Persistent project memory for Grok Bot.</h2>
+                        <p class="text-tech/75 leading-relaxed">
+                            Grok Bot is one part of a larger, controlled engineering architecture. It reads and writes its own project memory through MCP; it does not curate, and it cannot reach other projects or write to Shared Knowledge.
+                        </p>
+                    </div>
+                    <ol class="lg:col-span-3 grid gap-3">
+                        {grokSteps.map((step, i) => (
+                            <li class="flex gap-4 items-start p-4 rounded-lg bg-white/5 border border-white/10">
+                                <span class="font-mono text-xs text-orange pt-1" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                                <span class="text-tech/85 leading-relaxed">{step}</span>
+                            </li>
+                        ))}
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Highlights + principles -->
+            <section class="py-20 px-6 bg-offwhite">
+                <div class="max-w-7xl mx-auto">
+                    <div class="mb-10 max-w-3xl">
+                        <div class="font-mono text-xs uppercase tracking-wider text-orange mb-3">// Technical Highlights</div>
+                        <h2 class="font-heading font-semibold text-navy text-3xl md:text-4xl tracking-tight">Designed for control, traceability, and continuity.</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+                        {highlights.map((h) => (
+                            <div class="p-6 rounded-lg bg-white border border-border-mist">
+                                <span class="block w-8 h-0.5 rounded-full bg-orange mb-4"></span>
+                                <h3 class="font-heading font-semibold text-navy text-lg mb-2">{h.title}</h3>
+                                <p class="text-steel">{h.text}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <h3 class="font-heading font-semibold text-navy text-xl mb-5">Engineering principles</h3>
+                    <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5">
+                        {principles.map(([t, d]) => (
+                            <div class="border-t border-border-mist pt-4">
+                                <dt class="font-semibold text-navy">{t}</dt>
+                                <dd class="text-steel mt-1">{d}</dd>
+                            </div>
+                        ))}
+                    </dl>
+                    <p class="mt-8 text-sm text-steel">These are architectural properties of the system, not claims of independent security or functional-safety certification.</p>
+                </div>
+            </section>
+
+            <!-- Status -->
+            <section class="pb-20 px-6 bg-offwhite">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-8 rounded-xl bg-white border border-border-mist">
+                        <div class="font-mono text-xs uppercase tracking-wider text-[#16a34a] mb-4">Operational</div>
+                        <ul class="space-y-2.5 text-ink">
+                            {operational.map((o) => <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[#22c55e]" aria-hidden="true"></span>{o}</li>)}
+                        </ul>
+                    </div>
+                    <div class="p-8 rounded-xl bg-white border border-border-mist">
+                        <div class="font-mono text-xs uppercase tracking-wider text-steel mb-4">Planned extensions</div>
+                        <ul class="space-y-2.5 text-steel">
+                            {planned.map((o) => <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full border border-steel" aria-hidden="true"></span>{o}</li>)}
+                        </ul>
+                        <p class="mt-6 text-sm text-steel">Search today is SQLite FTS5. Documents are ingested from a local folder.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="py-20 px-6 bg-navy">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="font-heading font-semibold text-white text-3xl md:text-4xl tracking-tight mb-4">Building AI systems for complex engineering workflows?</h2>
+                    <p class="text-tech/75 leading-relaxed mb-8">We help organizations design and integrate AI systems that fit existing engineering processes, infrastructure, and governance requirements.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href={mailto('AI integration project')} class="px-7 py-3 bg-orange text-white font-semibold rounded-md hover:bg-orange/90 transition-colors inline-flex items-center gap-2">
+                            Discuss an AI Integration Project <span class="font-mono" aria-hidden="true">-></span>
+                        </a>
+                        <a href="/" class="px-7 py-3 border border-white/20 text-white font-semibold rounded-md hover:bg-white/5 transition-colors inline-flex items-center gap-2">
+                            Back to Fisherman Engineering <span class="font-mono" aria-hidden="true">-></span>
+                        </a>
+                    </div>
+                    <p class="mt-10 text-xs text-tech/50 leading-relaxed">
+                        Grok Bot characters are illustrative placeholders in the Grok Bot style. Hermes Agent icon from the Nous Research Hermes Agent project. Fisherman Engineering is not affiliated with or endorsed by xAI or Nous Research.
+                    </p>
+                </div>
+            </section>
+        </main>
+        <SiteFooter />
+    </div>
+</Layout>

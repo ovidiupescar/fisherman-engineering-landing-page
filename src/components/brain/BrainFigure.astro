@@ -1,0 +1,106 @@
+---
+// Interactive BRAIN figure. Desktop and mobile are two arrangements of the same SVG components;
+// CSS shows one, the script animates whichever is visible. Synthetic data only.
+import { brainScene } from '../../lib/brain-scene.js';
+
+const desktop = brainScene('desktop', 'bd');
+const mobile = brainScene('mobile', 'bm');
+
+const modes = [
+    { id: 'capture', label: 'Capture' },
+    { id: 'curate', label: 'Curate' },
+    { id: 'retrieve', label: 'Retrieve' },
+];
+---
+
+<div class="be" data-brain-figure>
+    <div class="be-stage">
+        <div class="be-desktop" set:html={desktop} />
+        <div class="be-mobile" set:html={mobile} />
+    </div>
+
+    <div class="be-bar">
+        <div class="be-tabs" role="tablist" aria-label="Show how BRAIN works">
+            {modes.map((m, i) => (
+                <button type="button" role="tab" id={`be-tab-${m.id}`} aria-controls={`be-panel-${m.id}`} aria-selected="false" tabindex={i === 0 ? 0 : -1} data-mode={m.id}>
+                    <span class="be-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{m.label}
+                </button>
+            ))}
+        </div>
+        <button type="button" class="be-replay" data-be-replay>Replay</button>
+    </div>
+
+    <p class="be-caption" data-be-caption aria-live="polite">Each Grok Bot has its own project memory. Choose a mode to see how knowledge moves.</p>
+
+    <div class="be-panels">
+        <div role="tabpanel" data-mode="idle" class="be-panel">
+            <p>Two Grok Bots, each with its own project memory, and a Shared Knowledge area without a bot. Hermes Agent curates one area at a time. Claude Code and Codex connect only to the areas their tokens allow.</p>
+        </div>
+        <div role="tabpanel" id="be-panel-capture" aria-labelledby="be-tab-capture" data-mode="capture" class="be-panel" hidden>
+            <ul>
+                <li>Grok Bot A submits a note through its own token-scoped MCP connection.</li>
+                <li>BRAIN keeps the original source and an event, and indexes it with SQLite FTS5 straight away.</li>
+                <li>No AI step runs before it is searchable. Hermes is not involved, and nothing passes through Shared Knowledge.</li>
+            </ul>
+        </div>
+        <div role="tabpanel" id="be-panel-curate" aria-labelledby="be-tab-curate" data-mode="curate" class="be-panel" hidden>
+            <ul>
+                <li>Hermes Agent takes the lock for one area, here Project Twin A, and reads its new sources.</li>
+                <li>It writes structured Markdown pages in a restricted workspace. The original sources stay unchanged.</li>
+                <li>Changes are validated, then committed to Git with a curation receipt. Areas are never mixed.</li>
+            </ul>
+        </div>
+        <div role="tabpanel" id="be-panel-retrieve" aria-labelledby="be-tab-retrieve" data-mode="retrieve" class="be-panel" hidden>
+            <ul>
+                <li>Grok Bot A asks for context with its token: a session brief, search, and the pages it needs.</li>
+                <li>Only Project Twin A answers, plus Shared pages that Twin A explicitly imports.</li>
+                <li>Project Twin B stays closed. The same context is there again in the next session.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style is:global>
+    .be { --be-line: rgba(223, 233, 243, 0.16); color: #c8d6e4; }
+    .be-stage { border-radius: 24px; overflow: hidden; background: #061525; box-shadow: 0 0 0 1px var(--be-line); }
+    .be-svg { display: block; width: 100%; height: auto; }
+    .be-mobile { display: none; }
+    @media (max-width: 767px) {
+        .be-desktop { display: none; }
+        .be-mobile { display: block; }
+        .be-stage { border-radius: 18px; }
+    }
+    .be-svg [data-eye], .be-svg [data-bot-body], .be-svg [data-raw], .be-svg [data-cur], .be-svg [data-newcard],
+    .be-svg [data-check], .be-svg [data-tile], .be-svg [data-status], .be-svg [data-fx] > g, .be-svg [data-eyes] {
+        transform-box: fill-box;
+        transform-origin: center;
+    }
+    .be-float { animation: be-float 6s ease-in-out infinite; }
+    .be-svg [data-bot="B"] .be-float { animation-delay: -3s; }
+    @keyframes be-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    .be-warm { animation: be-warm 7s ease-in-out infinite; }
+    @keyframes be-warm { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.5; } }
+    @media (prefers-reduced-motion: reduce) { .be-float, .be-warm { animation: none; } }
+
+    .be-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; }
+    .be-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .be-tabs button, .be-replay {
+        min-height: 44px; padding: 0 18px; border-radius: 999px; font: 600 14px/1 Inter, system-ui, sans-serif; letter-spacing: 0.01em;
+        color: #c8d6e4; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(223, 233, 243, 0.2); cursor: pointer;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .be-tabs button:hover, .be-replay:hover { border-color: rgba(223, 233, 243, 0.45); color: #fff; }
+    .be-tabs button[aria-selected="true"] { color: #fff; background: rgba(255, 106, 0, 0.16); border-color: #ff6a00; }
+    .be-num { font: 500 11px/1 'JetBrains Mono', monospace; color: #ff9d52; margin-right: 8px; }
+    .be-replay { background: transparent; color: #9fb4c8; }
+    .be [role="tab"]:focus-visible, .be-replay:focus-visible { outline: 2px solid #ff6a00; outline-offset: 3px; }
+    .be-caption { margin: 18px 0 0; text-align: center; font: 600 17px/1.4 Sora, Inter, system-ui, sans-serif; color: #f2f6fb; min-height: 1.4em; }
+    .be-panels { max-width: 720px; margin: 12px auto 0; }
+    .be-panel { font: 15px/1.6 Inter, system-ui, sans-serif; color: #9fb4c8; text-align: center; }
+    .be-panel ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+    .be-panel li::before { content: "·"; color: #ff9d52; margin-right: 8px; }
+</style>
+
+<script>
+    import '../../scripts/brain-figure.js';
+</script>

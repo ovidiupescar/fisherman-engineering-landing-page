@@ -1,83 +1,76 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import BrainPreview from '../components/brain/BrainPreview.astro';
+import { mailto } from '../lib/site';
 
-const email = 'ovidiupescar@fishermanengineering.com';
-const aiProjectMailto = `mailto:${email}?subject=${encodeURIComponent('AI project inquiry')}`;
+const aiProjectMailto = mailto('AI project inquiry');
 
 // Heroicons outline paths
 const services = [
     {
-        title: 'Software Development',
-        icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
-        items: ['C/C++ Embedded', 'Python', 'ROS 2', 'Software Architecture'],
+        title: 'Functional Safety Engineering',
+        icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+        items: ['ISO 26262 Functional Safety', 'Safety Concepts & Architecture', 'HARA, FTA, FMEA & SOTIF', 'Safety Requirements & Traceability'],
     },
     {
-        title: 'ISO 26262 Safety',
-        icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
-        items: ['FMEA / FTA / SFA', 'Safety Architecture', 'Safety Requirements'],
-    },
-    {
-        title: 'Project Management',
-        icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
-        items: ['Team Leading', 'Project Monitoring', 'Stakeholder Satisfaction'],
-    },
-    {
-        title: 'ISO 42001 AI Management',
-        icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z',
-        items: ['AI Management Systems', 'AI Governance', 'AI Risk Management'],
-    },
-    {
-        title: 'Robotics Safety',
+        title: 'Robotics & Machinery Safety',
         icon: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z',
-        items: ['Functional Safety', 'Collaborative Robots', 'Risk Assessment'],
+        items: ['Machinery Risk Assessment', 'ISO 12100, ISO 13849 & IEC 62061', 'Safety-Related Sensing & Control', 'Safety Concepts & Validation Support'],
+    },
+    {
+        title: 'Embedded Software & Systems Integration',
+        icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+        items: ['Embedded C/C++ & Python', 'ROS 2 & Robotics Integration', 'Software & System Architecture', 'Hardware–Software Integration'],
+    },
+    {
+        title: 'Systems Engineering & Architecture',
+        icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4',
+        items: ['System Requirements & Architecture', 'Technical Concept Development', 'Interface & Integration Engineering', 'Requirements Traceability'],
     },
     {
         title: 'AI Transformation & Integration',
         icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-        items: ['Agentic AI & Workflow Automation', 'Enterprise AI Integration', 'AI-Assisted Software Engineering', 'Deployment & Governance'],
+        items: ['Agentic AI & Workflow Automation', 'Enterprise AI Integration', 'AI-Assisted Software Engineering', 'AI Deployment & Operations'],
+    },
+    {
+        title: 'AI Governance & ISO 42001',
+        icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z',
+        items: ['ISO 42001-Aligned AI Management', 'AI Risk Assessment & Governance', 'Human Oversight & Controls', 'AI Lifecycle & Traceability'],
     },
 ];
 
 const aiCapabilities = [
-    { title: 'AI Agents & Automation', text: 'Custom agents that connect internal tools, knowledge bases, and business processes.' },
-    { title: 'AI-Native Engineering', text: 'Integrating AI coding agents and automated workflows into software development.' },
-    { title: 'Enterprise Integration', text: 'Connecting AI systems with existing infrastructure, applications, and data.' },
+    { title: 'AI Agents & Automation', text: 'Custom agents connecting internal tools, knowledge bases, and business workflows.' },
+    { title: 'AI-Native Engineering', text: 'Integrating AI coding agents and automated workflows into software development processes.' },
+    { title: 'Enterprise Integration', text: 'Connecting AI systems with existing infrastructure, applications, and enterprise data.' },
     { title: 'Responsible AI Deployment', text: 'Security, risk management, human oversight, and ISO 42001-aligned governance.' },
 ];
 
-// Add future projects here. Rename the section to "Selected Work" once non-open-source projects are added.
+// Selected engineering projects. The featured one gets the large card with its visual.
+const featured = {
+    name: 'BRAIN',
+    subtitle: 'Persistent Memory for Project-Aware AI Agents',
+    category: 'Internal R&D · Operational',
+    description: 'A self-hosted, Git-native knowledge infrastructure that gives AI agents persistent, project-specific memory across complex engineering workflows.',
+    tags: ['Grok Bot', 'MCP', 'Project Digital Twins', 'Knowledge Curation', 'Git & Markdown', 'Access Control'],
+    link: { href: '/projects/brain', label: 'Explore BRAIN' },
+};
 const projects = [
     {
         name: 'Human-Robot Interface',
-        badge: 'HRI',
-        description: 'An open-source robotics stack for building a bilingual voice companion: ESP32-S3 face firmware, a Jetson-side ROS 2 pipeline for audio, perception and control, and an agent-platform adapter for extensible skills. Designed to run offline-capable on edge hardware.',
+        badge: 'Open Source',
+        description: 'An open-source robotics stack combining ESP32-S3 interface firmware, Jetson-based ROS 2 processing, and agent-platform integration for an extensible voice-enabled robotic companion.',
         tags: ['ROS 2', 'Jetson Orin', 'ESP32-S3', 'Python / C++'],
         link: { href: 'https://github.com/ovidiupescar/human-robot-interface', label: 'View on GitHub' },
     },
 ];
 ---
 
-<Layout title="Fisherman Engineering — Functional Safety, Robotics Safety & AI Transformation Consulting">
+<Layout title="Fisherman Engineering | Functional Safety, Robotics & AI Engineering">
     <div class="relative min-h-screen flex flex-col">
-        <!-- Navigation -->
-        <nav class="border-b border-border-mist sticky top-0 z-50 bg-offwhite/85 backdrop-blur-md" aria-label="Main">
-            <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                <a href="/" class="flex items-center" aria-label="Fisherman Engineering home">
-                    <img src="/fe-wordmark.png" alt="Fisherman Engineering" class="h-6 w-auto" />
-                </a>
-                <div class="flex items-center gap-8">
-                    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-steel">
-                        <a href="#services" class="hover:text-navy transition-colors">Services</a>
-                        <a href="#ai-transformation" class="hover:text-navy transition-colors">AI Transformation</a>
-                        <a href="#leadership" class="hover:text-navy transition-colors">Leadership</a>
-                        <a href="#open-source" class="hover:text-navy transition-colors">Open Source</a>
-                    </div>
-                    <a href={`mailto:${email}`} class="text-sm font-semibold text-white bg-orange px-4 py-2 rounded-md hover:bg-orange/90 transition-colors">
-                        Get in Touch
-                    </a>
-                </div>
-            </div>
-        </nav>
+        <SiteNav />
 
         <main class="flex-grow">
             <!-- Hero Section -->
@@ -105,11 +98,11 @@ const projects = [
                         <div class="w-16 h-1 rounded-full bg-orange mb-8"></div>
 
                         <p class="text-lg md:text-xl text-tech/80 max-w-2xl mb-10 leading-relaxed">
-                            Specialized in functional safety analysis, embedded C/C++ software, and AI management systems — across automotive, robotics, and autonomous machines.
+                            Functional safety and systems engineering for automotive, robotics, and autonomous systems — combining embedded software expertise with practical AI integration.
                         </p>
 
                         <div class="flex flex-wrap gap-4">
-                            <a href={`mailto:${email}`} class="px-7 py-3 bg-orange text-white font-semibold rounded-md hover:bg-orange/90 transition-colors inline-flex items-center gap-2">
+                            <a href={mailto()} class="px-7 py-3 bg-orange text-white font-semibold rounded-md hover:bg-orange/90 transition-colors inline-flex items-center gap-2">
                                 Get in Touch <span class="font-mono" aria-hidden="true">-></span>
                             </a>
                             <a href="#services" class="px-7 py-3 border border-white/20 text-white font-semibold rounded-md hover:bg-white/5 transition-colors">
@@ -202,7 +195,7 @@ const projects = [
                         <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
                             <h3 class="font-heading font-semibold text-navy text-xl">Ovidiu Pescar</h3>
                             <span class="text-steel">Founder &amp; Engineering Consultant</span>
-                            <span class="px-3 py-1 rounded-full border border-border-mist font-mono text-xs text-navy">15+ years in engineering</span>
+                            <span class="px-3 py-1 rounded-full border border-border-mist font-mono text-xs text-navy">15+ Years Engineering Experience</span>
                         </div>
                         <div class="space-y-4 text-steel leading-relaxed mb-8">
                             <p>
@@ -212,7 +205,7 @@ const projects = [
                                 Professional experience spans BMW's ASIL D ADAS compute platforms, computer-vision systems, electronic steering, and safety-related robotics, with previous engineering and leadership roles at Continental, Ford, and thyssenkrupp.
                             </p>
                             <p>
-                                Combining hands-on software development, systems architecture, functional safety, and technical project leadership, Ovidiu brings a rigorous engineering approach to AI integration and automation.
+                                Combining hands-on software development, systems architecture, functional safety, and technical project leadership, Ovidiu brings a rigorous engineering approach to complex systems and AI integration.
                             </p>
                         </div>
                         <a href="https://www.linkedin.com/in/ovidiupescar" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-semibold text-navy hover:text-orange transition-colors">
@@ -222,18 +215,35 @@ const projects = [
                 </div>
             </section>
 
-            <!-- Open Source Section -->
-            <section id="open-source" class="pb-24 px-6 bg-offwhite scroll-mt-16" aria-labelledby="open-source-heading">
+            <!-- Selected Engineering Projects -->
+            <section id="projects" class="pb-24 px-6 bg-offwhite scroll-mt-16" aria-labelledby="projects-heading">
                 <div class="max-w-7xl mx-auto space-y-6">
-                    {projects.map((project, i) => (
-                        <article class="relative overflow-hidden p-8 md:p-12 rounded-xl bg-midnight">
+                    <h2 id="projects-heading" class="font-mono text-xs uppercase tracking-wider text-orange"><span aria-hidden="true">// </span>Selected Engineering Projects</h2>
+
+                    <article class="relative overflow-hidden rounded-xl bg-midnight grid grid-cols-1 lg:grid-cols-2">
+                        <div class="relative z-10 p-8 md:p-12 flex flex-col justify-center">
+                            <span class="self-start mb-5 px-3 py-1 rounded-full border border-white/15 text-tech/80 font-mono text-xs inline-flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#22c55e]" aria-hidden="true"></span>{featured.category}</span>
+                            <h3 class="text-3xl md:text-4xl font-heading font-semibold text-white mb-2">{featured.name}</h3>
+                            <p class="font-heading text-lg text-tech/90 mb-4">{featured.subtitle}</p>
+                            <p class="text-tech/75 leading-relaxed mb-6">{featured.description}</p>
+                            <ul class="flex flex-wrap gap-2 text-xs font-mono text-tech/70 mb-8" aria-label="Technologies and capabilities">
+                                {featured.tags.map((tag) => <li class="px-3 py-1 rounded-full bg-white/5 border border-white/10">{tag}</li>)}
+                            </ul>
+                            <a href={featured.link.href} class="self-start px-6 py-3 bg-orange text-white font-semibold rounded-md hover:bg-orange/90 transition-colors inline-flex items-center gap-2">
+                                {featured.link.label} <span class="font-mono" aria-hidden="true">-></span>
+                            </a>
+                        </div>
+                        <a href={featured.link.href} class="block self-center p-4 lg:p-6" aria-label="Explore BRAIN">
+                            <BrainPreview />
+                        </a>
+                    </article>
+
+                    {projects.map((project) => (
+                        <article class="relative overflow-hidden p-8 md:p-10 rounded-xl bg-midnight">
                             <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-orange/15 blur-[100px]"></div>
                             <div class="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between gap-8">
                                 <div class="max-w-2xl">
-                                    {i === 0 && (
-                                        <h2 id="open-source-heading" class="font-mono text-xs uppercase tracking-wider text-orange mb-4"><span aria-hidden="true">// </span>Open Source</h2>
-                                    )}
-                                    <div class="flex items-center gap-3 mb-4">
+                                    <div class="flex flex-wrap items-center gap-3 mb-4">
                                         <h3 class="text-2xl md:text-3xl font-heading font-semibold text-white">{project.name}</h3>
                                         <span class="px-2 py-0.5 rounded-full bg-orange/15 border border-orange/30 text-xs font-mono text-orange">{project.badge}</span>
                                     </div>
@@ -254,22 +264,6 @@ const projects = [
             </section>
         </main>
 
-        <!-- Footer -->
-        <footer class="bg-navy py-14 px-6">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-                    <div>
-                        <img src="/fe-wordmark.png" alt="Fisherman Engineering" class="h-6 w-auto brightness-0 invert opacity-90 mb-3" />
-                        <p class="text-tech/55 text-sm font-mono">Automotive Safety · Robotics Safety · Systems Consulting</p>
-                    </div>
-                    <a href={`mailto:${email}`} class="text-tech/70 text-sm hover:text-orange transition-colors break-all">
-                        {email}
-                    </a>
-                </div>
-                <div class="mt-10 pt-6 border-t border-white/10 text-tech/60 text-sm">
-                    &copy; {new Date().getFullYear()} Fisherman Engineering SRL.
-                </div>
-            </div>
-        </footer>
+        <SiteFooter />
     </div>
 </Layout>

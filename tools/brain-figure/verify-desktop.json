@@ -1,0 +1,21 @@
+[
+  ["wait", 1200],
+  ["scroll", "[data-brain-figure]"],
+  ["wait", 600],
+  ["shot", "tools/brain-figure/out/v-idle.png", "[data-brain-figure]", 1],
+  ["click", "#be-tab-capture"],
+  ["wait", 1900],
+  ["shot", "tools/brain-figure/out/v-capture-mid.png", "[data-brain-figure] .be-stage", 1],
+  ["wait", 3400],
+  ["shot", "tools/brain-figure/out/v-capture-end.png", "[data-brain-figure]", 1],
+  ["click", "#be-tab-curate"],
+  ["wait", 2900],
+  ["shot", "tools/brain-figure/out/v-curate-mid.png", "[data-brain-figure] .be-stage", 1],
+  ["wait", 4200],
+  ["shot", "tools/brain-figure/out/v-curate-end.png", "[data-brain-figure] .be-stage", 1],
+  ["click", "#be-tab-retrieve"],
+  ["wait", 2700],
+  ["shot", "tools/brain-figure/out/v-retrieve-mid.png", "[data-brain-figure] .be-stage", 1],
+  ["wait", 3600],
+  ["shot", "tools/brain-figure/out/v-retrieve-end.png", "[data-brain-figure] .be-stage", 1]
+]

@@ -1,0 +1,11 @@
+---
+// Static preview of the BRAIN figure for the homepage: inline SVG, no animation runtime.
+import { brainScene } from '../../lib/brain-scene.js';
+const svg = brainScene('preview', 'bp');
+---
+
+<div class="be-preview" set:html={svg} />
+
+<style>
+    .be-preview :global(svg) { display: block; width: 100%; height: auto; }
+</style>

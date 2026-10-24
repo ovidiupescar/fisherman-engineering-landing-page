@@ -7,11 +7,11 @@ The site is built with Astro and Tailwind CSS. It presents the company positioni
 ## What it includes
 
 - Responsive Astro landing page for Fisherman Engineering
-- Service sections for ISO 26262, robotics safety, embedded software, project management, ISO 42001 AI management, and AI transformation & integration
+- Six service cards: functional safety, robotics & machinery safety, embedded software & systems integration, systems engineering & architecture, AI transformation & integration, and AI governance & ISO 42001
 - AI Transformation capabilities and Engineering Leadership sections
-- Project cards driven by the `projects` array in `src/pages/index.astro`
+- Selected Engineering Projects: a featured BRAIN card (static SVG preview, no animation runtime) and the open-source HRI robotics stack
+- `/projects/brain` case study: an interactive BRAIN illustration (SVG components in `src/lib/brain-scene.js`, Capture / Curate / Retrieve animated with Motion in `src/scripts/brain-figure.js`, desktop and mobile layouts, reduced-motion support) and a sanitized architecture diagram
 - FE Signal Halo brand identity assets and design guidelines
-- Open-source project highlight section linking to the HRI robotics stack
 - Lightweight static build suitable for simple hosting
 
 ## Tech stack
